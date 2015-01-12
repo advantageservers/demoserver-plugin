@@ -1,7 +1,7 @@
 main: com.advantageservers.demoserver.DemoServer
 name: Demo
 version: 1.0
-description: Light Minecraft plugin to provide functionality on our demo server
+description: Light plugin to provide functionality on our demo server
 author: Dylan Hansch
 website: https://advantageservers.com
 commands:
