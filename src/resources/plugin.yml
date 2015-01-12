@@ -1,6 +1,20 @@
 main: com.advantageservers.demoserver.DemoServer
-name: DemoServer-Plugin
+name: Demo
 version: 1.0
 description: Light Minecraft plugin to provide functionality on our demo server
 author: Dylan Hansch
 website: https://advantageservers.com
+commands:
+    setspawn:
+        description: Set server spawn
+        usage: /<command>
+    spawn:
+        description: Teleport to server spawn
+        usage: /<command> [player]
+permissions:
+    demo.*:
+        description: Server Admin
+        default: op
+        children:
+            demo.setspawn: true
+            demo.spawn: true
