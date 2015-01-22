@@ -23,22 +23,21 @@ public class SpawnCommand implements CommandExecutor{
         }
         Player player = (Player) sender;
         if(args.length == 0){
-            if(!player.hasPermission("demo.spawn")){
-                player.sendMessage(ChatColor.DARK_RED + "You do not have demo.spawn");
-                return true;
-            } else {
-                player.teleport(plugin.getSpawn());
-                player.sendMessage(ChatColor.GOLD + "Teleporting..");
-                return true;
-            }
+            player.teleport(plugin.getSpawn());
+            player.sendMessage(ChatColor.GOLD + "Teleporting..");
+            return true;
         }
         @SuppressWarnings("deprecation")
 		Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
         if(args.length == 1){
-            if(!player.hasPermission("demo.spawn")){
-                player.sendMessage(ChatColor.DARK_RED + "You do not have demo.spawn");
+        	if(targetPlayer == null){
+				sender.sendMessage(ChatColor.RED + "Error: That player is not online!");
+				return true;
+			}
+            if(!player.hasPermission("demo.spawn.others")){
+                player.sendMessage(ChatColor.DARK_RED + "You do not have demo.spawn.others");
                 return true;
-            } else {
+            }else{
                 targetPlayer.teleport(plugin.getSpawn());
                 targetPlayer.sendMessage(ChatColor.GOLD + "You got teleported to spawn by " + ChatColor.RESET +  player.getDisplayName());
                 return true;
@@ -46,13 +45,8 @@ public class SpawnCommand implements CommandExecutor{
             
         }
         if(args.length >= 2){
-            if(!player.hasPermission("demo.spawn")){
-                player.sendMessage(ChatColor.DARK_RED + "You do not have demo.spawn");
-                return true;
-            } else {
-                player.sendMessage(ChatColor.RED + "Error: Too many arguments!");
-                return true;
-            }
+            player.sendMessage(ChatColor.RED + "Error: Too many arguments!");
+            return true;
         }
         return false;
     }

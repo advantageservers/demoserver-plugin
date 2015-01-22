@@ -17,4 +17,4 @@ permissions:
         default: op
         children:
             demo.setspawn: true
-            demo.spawn: true
+            demo.spawn.others: true
