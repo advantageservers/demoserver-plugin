@@ -39,7 +39,7 @@ public class DemoServer extends JavaPlugin implements Listener {
 	@EventHandler
 	public boolean onPlayerJoin(PlayerJoinEvent event){
 		Player player = event.getPlayer();
-		player.sendMessage(ChatColor.GOLD + "Welcome to the Advantage Servers test Server, " + ChatColor.RESET + player.getDisplayName() + ChatColor.GOLD + "!");
+		event.setJoinMessage(ChatColor.YELLOW + player.getDisplayName() + " joined the game.\n" + ChatColor.GOLD + "Welcome to the Advantage Servers test Server!");
 		return true;
 	}
 	
