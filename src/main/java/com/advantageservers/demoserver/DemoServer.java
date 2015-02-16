@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.advantageservers.demoserver.command.GamemodeCommand;
 import com.advantageservers.demoserver.command.SetSpawnCommand;
 import com.advantageservers.demoserver.command.SpawnCommand;
 
@@ -19,6 +20,7 @@ public class DemoServer extends JavaPlugin implements Listener {
 	public void onEnable(){
 		saveDefaultConfig();
 		getServer().getPluginManager().registerEvents(this, this);
+		getCommand("gamemode").setExecutor(new GamemodeCommand(this));
 		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
 		getCommand("spawn").setExecutor(new SpawnCommand(this));
 	}

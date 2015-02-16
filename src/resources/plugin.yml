@@ -5,6 +5,10 @@ description: Light plugin to provide functionality on our demo server
 author: Dylan Hansch
 website: https://advantageservers.com
 commands:
+    gamemode:
+        description: Set player gamemode
+        usage: /<command> <mode> [player]
+        aliases: [gm]
     setspawn:
         description: Set server spawn
         usage: /<command>
@@ -16,5 +20,7 @@ permissions:
         description: Server Admin
         default: op
         children:
+            demo.gamemode: true
+            demo.gamemode.others: true
             demo.setspawn: true
             demo.spawn.others: true
