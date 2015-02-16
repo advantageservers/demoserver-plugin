@@ -1,11 +1,9 @@
 package com.advantageservers.demoserver;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.advantageservers.demoserver.command.SetSpawnCommand;
@@ -37,10 +35,9 @@ public class DemoServer extends JavaPlugin implements Listener {
 	}
 	
 	@EventHandler
-	public boolean onPlayerJoin(PlayerJoinEvent event){
-		Player player = event.getPlayer();
-		event.setJoinMessage(ChatColor.YELLOW + player.getDisplayName() + " joined the game.\n" + ChatColor.GOLD + "Welcome to the Advantage Servers test Server!");
-		return true;
+	public boolean onPlayerRespawn(PlayerRespawnEvent event){
+		event.setRespawnLocation(getSpawn());
+        return false;
 	}
 	
 }
