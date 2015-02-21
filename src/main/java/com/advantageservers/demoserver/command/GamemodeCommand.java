@@ -56,31 +56,21 @@ public class GamemodeCommand implements CommandExecutor {
 		}
 		Player player = (Player) sender;
 		if(args.length == 0){
-			if(!player.hasPermission("demo.gamemode")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have demo.gamemode");
-				return true;
-			} else {
-				player.sendMessage(ChatColor.RED + "Error: Not enough arguments!");
-				return false;
-			}	
+			player.sendMessage(ChatColor.RED + "Error: Not enough arguments!");
+			return false;
 		}
 		if(args.length == 1){
-			if(!player.hasPermission("demo.gamemode")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have demo.gamemode");
+			if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
+				player.setGameMode(GameMode.SURVIVAL);
 				return true;
-			} else {
-				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
-					player.setGameMode(GameMode.SURVIVAL);
-					return true;
-				}else if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
-					player.setGameMode(GameMode.CREATIVE);
-					return true;
-				}else if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
-					player.setGameMode(GameMode.ADVENTURE);
-					return true;
-				}else{
-					return false;
-				}
+			}else if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
+				player.setGameMode(GameMode.CREATIVE);
+				return true;
+			}else if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
+				player.setGameMode(GameMode.ADVENTURE);
+				return true;
+			}else{
+				return false;
 			}
 		}
 		@SuppressWarnings("deprecation")
@@ -112,13 +102,8 @@ public class GamemodeCommand implements CommandExecutor {
 			}
 		}
 		if(args.length >= 3){
-			if(!player.hasPermission("demo.gamemode")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have demo.gamemode");
-				return true;
-			} else {
-				player.sendMessage(ChatColor.RED + "Error: Too many arguments!");
-				return false;
-			}
+			player.sendMessage(ChatColor.RED + "Error: Too many arguments!");
+			return false;
 		}
 		return false;
 	}

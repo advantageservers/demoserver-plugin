@@ -20,7 +20,6 @@ permissions:
         description: Server Admin
         default: op
         children:
-            demo.gamemode: true
             demo.gamemode.others: true
             demo.setspawn: true
             demo.spawn.others: true
