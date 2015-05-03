@@ -1,6 +1,6 @@
-main: com.advantageservers.demoserver.DemoServer
-name: Demo
-version: 1.0
+main: ${main.class}
+name: ${project.name}
+version: ${project.version}
 description: Light plugin to provide functionality on our demo server
 author: Dylan Hansch
 website: https://advantageservers.com
