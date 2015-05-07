@@ -15,6 +15,9 @@ commands:
     spawn:
         description: Teleport to server spawn
         usage: /<command> [player]
+    time:
+        description: Set world time
+        usage: /<command> <day/noon/night/set> [ticks] [world]
 permissions:
     demo.*:
         description: Server Admin
@@ -23,3 +26,4 @@ permissions:
             demo.gamemode.others: true
             demo.setspawn: true
             demo.spawn.others: true
+            demo.time: true

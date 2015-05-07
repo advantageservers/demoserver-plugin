@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.advantageservers.demoserver.command.GamemodeCommand;
 import com.advantageservers.demoserver.command.SetSpawnCommand;
 import com.advantageservers.demoserver.command.SpawnCommand;
+import com.advantageservers.demoserver.command.TimeCommand;
 
 public class DemoServer extends JavaPlugin implements Listener {
 	
@@ -23,6 +24,7 @@ public class DemoServer extends JavaPlugin implements Listener {
 		getCommand("gamemode").setExecutor(new GamemodeCommand(this));
 		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
 		getCommand("spawn").setExecutor(new SpawnCommand(this));
+		getCommand("time").setExecutor(new TimeCommand(this));
 	}
 	
 	public Location getSpawn(){
