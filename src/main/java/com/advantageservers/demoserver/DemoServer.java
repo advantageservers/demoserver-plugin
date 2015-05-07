@@ -1,8 +1,12 @@
 package com.advantageservers.demoserver;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -44,4 +48,17 @@ public class DemoServer extends JavaPlugin implements Listener {
 		return false;
 	}
 	
+	@EventHandler
+	public boolean onPlayerJoinEvent(PlayerJoinEvent event){
+		// Remove the bukkit join message
+		event.setJoinMessage(null);
+		
+		// Broadcast message to everyone on join then send welcome message to event player
+		for(Player player : Bukkit.getServer().getOnlinePlayers()){
+			player.sendMessage(ChatColor.YELLOW + event.getPlayer().getName() + " joined the game.");
+		}
+		event.getPlayer().sendMessage(ChatColor.GREEN + "Welcome to the Advantage Servers test server.");
+		
+		return true;
+	}
 }
