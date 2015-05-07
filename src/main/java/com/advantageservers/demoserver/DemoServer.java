@@ -41,7 +41,7 @@ public class DemoServer extends JavaPlugin implements Listener {
 	@EventHandler
 	public boolean onPlayerRespawn(PlayerRespawnEvent event){
 		event.setRespawnLocation(getSpawn());
-        return false;
+		return false;
 	}
 	
 }
