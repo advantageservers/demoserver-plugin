@@ -14,8 +14,11 @@ import com.advantageservers.demoserver.command.GamemodeCommand;
 import com.advantageservers.demoserver.command.SetSpawnCommand;
 import com.advantageservers.demoserver.command.SpawnCommand;
 import com.advantageservers.demoserver.command.TimeCommand;
+import com.advantageservers.demoserver.command.UptimeCommand;
 
 public class DemoServer extends JavaPlugin implements Listener {
+	
+	private long uptime;
 	
 	@Override
 	public void onDisable(){
@@ -29,6 +32,9 @@ public class DemoServer extends JavaPlugin implements Listener {
 		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
 		getCommand("spawn").setExecutor(new SpawnCommand(this));
 		getCommand("time").setExecutor(new TimeCommand(this));
+		getCommand("uptime").setExecutor(new UptimeCommand(this));
+		
+		this.uptime = System.currentTimeMillis();
 	}
 	
 	public Location getSpawn(){
@@ -60,5 +66,18 @@ public class DemoServer extends JavaPlugin implements Listener {
 		event.getPlayer().sendMessage(ChatColor.GREEN + "Welcome to the Advantage Servers test server.");
 		
 		return true;
+	}
+	
+	public int[] getCurrentServerUptime(){
+		final int[] i = new int[4];
+		long l = System.currentTimeMillis() - this.uptime;
+		i[3] = (int)(l / 86400000L);
+		l -= i[3] * 86400000L;
+		i[2] = (int)(l / 3600000L);
+		l -= i[2] * 3600000;
+		i[1] = (int)(l / 60000L);
+		l -= i[1] * 60000L;
+		i[0] = (int)(l / 1000L);
+		return i;
 	}
 }

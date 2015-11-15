@@ -18,6 +18,9 @@ commands:
     time:
         description: Set world time
         usage: /<command> <day/noon/night/set> [ticks] [world]
+    uptime:
+        description: Display server uptime since last reload/restart
+        usage: /<command>
 permissions:
     demo.*:
         description: Server Admin
@@ -27,3 +30,4 @@ permissions:
             demo.setspawn: true
             demo.spawn.others: true
             demo.time: true
+            demo.uptime: true
