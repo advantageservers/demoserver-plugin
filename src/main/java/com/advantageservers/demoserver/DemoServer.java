@@ -11,6 +11,7 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.advantageservers.demoserver.command.GamemodeCommand;
+import com.advantageservers.demoserver.command.MemoryCommand;
 import com.advantageservers.demoserver.command.SetSpawnCommand;
 import com.advantageservers.demoserver.command.SpawnCommand;
 import com.advantageservers.demoserver.command.TimeCommand;
@@ -19,6 +20,7 @@ import com.advantageservers.demoserver.command.UptimeCommand;
 public class DemoServer extends JavaPlugin implements Listener {
 	
 	private long uptime;
+	public double memUsed, memMax, memFree;
 	
 	@Override
 	public void onDisable(){
@@ -29,6 +31,7 @@ public class DemoServer extends JavaPlugin implements Listener {
 		saveDefaultConfig();
 		getServer().getPluginManager().registerEvents(this, this);
 		getCommand("gamemode").setExecutor(new GamemodeCommand(this));
+		getCommand("memory").setExecutor(new MemoryCommand(this));
 		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
 		getCommand("spawn").setExecutor(new SpawnCommand(this));
 		getCommand("time").setExecutor(new TimeCommand(this));
@@ -79,5 +82,11 @@ public class DemoServer extends JavaPlugin implements Listener {
 		l -= i[1] * 60000L;
 		i[0] = (int)(l / 1000L);
 		return i;
+	}
+	
+	public synchronized void updateMemoryStats(){
+		memUsed = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576D;
+		memMax = Runtime.getRuntime().maxMemory() / 1048576D;
+		memFree = memMax - memUsed;
 	}
 }

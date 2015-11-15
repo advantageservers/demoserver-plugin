@@ -9,6 +9,10 @@ commands:
         description: Set player gamemode
         usage: /<command> <mode> [player]
         aliases: [gm]
+    memory:
+        description: Display server memory statistics
+        usage: /<command>
+        aliases: [mem]
     setspawn:
         description: Set server spawn
         usage: /<command>
@@ -19,7 +23,7 @@ commands:
         description: Set world time
         usage: /<command> <day/noon/night/set> [ticks] [world]
     uptime:
-        description: Display server uptime since last reload/restart
+        description: Display server uptime since last restart
         usage: /<command>
 permissions:
     demo.*:
@@ -27,6 +31,7 @@ permissions:
         default: op
         children:
             demo.gamemode.others: true
+            demo.mem: true
             demo.setspawn: true
             demo.spawn.others: true
             demo.time: true
