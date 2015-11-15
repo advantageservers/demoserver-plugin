@@ -21,7 +21,6 @@ public class UptimeCommand implements CommandExecutor {
 			sender.sendMessage(ChatColor.GOLD + "Uptime: " + ChatColor.GREEN + uptime[3] + " day(s), " + uptime[2] + " hour(s), " + uptime[1] + " minute(s), and " + uptime[0] + " second(s)");
 		}else{
 			sender.sendMessage(ChatColor.DARK_RED + "You do not have demo.uptime");
-			return true;
 		}
 		return true;
 	}
