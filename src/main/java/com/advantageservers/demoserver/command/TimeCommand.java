@@ -10,15 +10,15 @@ import org.bukkit.entity.Player;
 import com.advantageservers.demoserver.DemoServer;
 
 public class TimeCommand implements CommandExecutor {
-private final DemoServer plugin;
-    
-    public TimeCommand(DemoServer plugin) {
+	private final DemoServer plugin;
+	
+	public TimeCommand(DemoServer plugin) {
 		this.plugin = plugin;
 	}
-    
-    // Usage: /time <day/noon/night/set> [ticks] [world]
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
-    	// Sending as console
+	
+	// Usage: /time <day/noon/night/set> [ticks] [world]
+	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
+		// Sending as console
 		if(!(sender instanceof Player)){
 			if(args.length == 0 || args.length >= 4){
 				sender.sendMessage(ChatColor.RED + "Error: Not enough or too many arguments!");
